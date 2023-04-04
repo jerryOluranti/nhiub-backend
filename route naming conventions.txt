@@ -1,0 +1,9 @@
+Route naming conventions 🕹️
+
+1. It must be descriptive
+2. Short and concise
+3. Routes should have parent path tha represents the service
+4. Pluralise parent routes e.g /users, /tweets/:id/comments
+5. Route params should have descriptive names e.g /tweets/:id/comments -> /tweets/:tweetId/comments
+
+🍔
