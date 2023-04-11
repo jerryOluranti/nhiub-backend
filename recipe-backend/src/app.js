@@ -1,12 +1,17 @@
 const express = require("express");
-const {recipesRouter} = require("./services/recipes/router");
+const mongoose = require("mongoose");
+const {recipesRouter} = require("./routes/recipe.routes");
 
 const app = express();
+const MONGO_URL = "mongodb+srv://emogi:emogi@cluster0.bsyb5pi.mongodb.net/recipedb?retryWrites=true&w=majority";
 
 app.use(express.json()); // Helps our app to accept json data
 app.use('/recipes', recipesRouter);
 
-// http://localhost:4321/
-app.listen(3000, () => {
-  console.log("express server running...");
+mongoose.connect(MONGO_URL).then(() => {
+  app.listen(3000, () => {
+    console.log("express server running...");
+  })
+}).catch((err) => {
+  console.log("Mongo error", err);
 })
