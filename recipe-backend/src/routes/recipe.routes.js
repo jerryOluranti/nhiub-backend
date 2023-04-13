@@ -1,5 +1,6 @@
 const {Router} = require("express");
 const controller = require("../controllers/recipe.controller");
+const {checkSousChef} = require("../middlewares/auth.middleware");
 
 const router = Router();
 
@@ -10,12 +11,12 @@ router.get('/', controller.getAllRecipes);
 router.get('/:recipeId', controller.getSingleRecipe);
 
 // add new recipe
-router.post('/', controller.addRecipe);
+router.post('/', checkSousChef, controller.addRecipe);
 
 // update recipe
-router.patch('/:recipeId', controller.udpateRecipe);
+router.patch('/:recipeId', checkSousChef, controller.udpateRecipe);
 
 // delete recipe
-router.delete('/:recipeId', controller.deleteRecipe);
+router.delete('/:recipeId', checkSousChef, controller.deleteRecipe);
 
 module.exports.recipesRouter = router;
