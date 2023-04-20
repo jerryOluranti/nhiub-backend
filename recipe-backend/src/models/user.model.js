@@ -1,4 +1,5 @@
 const {model, Schema} = require("mongoose");
+const {recipeSchema} = require("./recipe.model");
 
 const userSchema = new Schema({
     name: String,
@@ -11,7 +12,8 @@ const userSchema = new Schema({
         type: String,
         default: "CHEF",
         enum: ["CHEF", "SOUS_CHEF"]
-    }
+    },
+    recipes: [recipeSchema]
 })
 
 const UserModel = model('User', userSchema);
