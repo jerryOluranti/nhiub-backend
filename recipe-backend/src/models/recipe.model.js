@@ -18,6 +18,5 @@ const recipeSchema = Schema({
 const RecipeModel = model("Recipe", recipeSchema);
 
 module.exports = {
-    RecipeModel,
-    recipeSchema
+    RecipeModel
 }
