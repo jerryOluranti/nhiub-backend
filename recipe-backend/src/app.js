@@ -9,6 +9,9 @@ const app = express();
 app.use(express.json()); // Helps our app to accept json data
 app.use('/users', userRouter);
 app.use('/recipes', recipesRouter);
+app.get('/status', (req, res) => {
+	res.status(200).send("Server is running");
+})
 
 try {
   // throw new Error("Just kidding 🥲");
